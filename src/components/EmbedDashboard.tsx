@@ -3,7 +3,7 @@ import { LookerEmbedSDK } from "@looker/embed-sdk";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { PageTitle } from "../types/types";
 
-const EmbedDashboard: React.FC<PageTitle> = ({ text }) => {
+const EmbedDashboard: React.FC<PageTitle> = ({ title }) => {
     const [loading, setLoading] = React.useState<boolean>(true);
 
     const makeDashboard = useCallback((el: HTMLDivElement | null): void => {
@@ -13,7 +13,7 @@ const EmbedDashboard: React.FC<PageTitle> = ({ text }) => {
         el.innerHTML = "";
 
         LookerEmbedSDK.createDashboardWithId(
-            "looker-visualizations"
+            "3"
         )
             .appendTo(el)
             .on("dashboard:loaded", () => {
@@ -30,7 +30,7 @@ const EmbedDashboard: React.FC<PageTitle> = ({ text }) => {
     return (
         <div className="flex flex-col h-full">
             <div className="bg-gray-100 p-4 border-b border-gray-300">
-                <h1 className="text-xl font-bold text-gray-800">{text}</h1>
+                <h1 className="text-xl font-bold text-gray-800">{title}</h1>
             </div>
             {loading && <LoadingSpinner />}
             <div

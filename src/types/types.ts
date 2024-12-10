@@ -1,3 +1,3 @@
 export interface PageTitle {
-    text: string;
+    title: string;
 }
